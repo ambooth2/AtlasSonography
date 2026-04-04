@@ -2,15 +2,6 @@
 <html lang="en">
 
 <head>
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5Q6WV8C5R2"></script>
-    <script>
-        window.dataLayer = window.dataLayer || [];
-        function gtag(){dataLayer.push(arguments);}
-        gtag('js', new Date());
-
-        gtag('config', 'G-5Q6WV8C5R2');
-    </script>
-    
     <title>Atlas Sonography</title>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -23,10 +14,6 @@
     <meta property="og:type" content="website">
 
     <link rel="stylesheet" href="AtlasSonography.css">
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Atlas Sonography</title>
-  <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
@@ -63,19 +50,65 @@
 
             <section id="content-grid">
                 <div class="content-box">
-                    <h3>Meet The Team</h3>
-                    <img src="Team_Photo.jpg" alt="Atlas Sonography Team">
-                    <p>Our team of experienced Biomedical Engineers are dedicated to providing top-notch AI analysis for ultrasound imaging.</p>
+    <h3>Meet The Team</h3>
+
+    <div class="carousel">
+
+        <button class="carousel-btn left">&#10094;</button>
+
+        <div class="carousel-viewport">
+            <div class="carousel-track" id="carouselTrack">
+
+                <div class="team-member">
+                    <img src="Isabella.jpg" alt="Isabella Soriano">
+                    <h4>Isabella Soriano</h4>
+                    <p>Project Lead and AI Engineer</p>
                 </div>
+
+                <div class="team-member">
+                    <img src="Andrew.jpg" alt="Andrew Booth">
+                    <h4>Andrew Booth</h4>
+                    <p>App Development Engineer</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="Lakshya.png" alt="Lakshya Dharwal">
+                    <h4>Lakshya Dharwal</h4>
+                    <p>Database Engineer</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="Camryn.jpg" alt="Camryn Sheen">
+                    <h4>Camryn Sheen</h4>
+                    <p>AI Training Engineer</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="Hunter.jpg" alt="Hunter Weber">
+                    <h4>Hunter Weber</h4>
+                    <p>Hardware Engineer</p>
+                </div>
+
+                <div class="team-member">
+                    <img src="G.jpg" alt="G Oakes">
+                    <h4>G Oakes</h4>
+                    <p>Biologics Engineer</p>
+                </div>
+
+            </div>
+        </div>
+
+        <button class="carousel-btn right">&#10095;</button>
+
+    </div>
+</div>
 
                 <div class="content-box">
                     <h3>About Celestia</h3>
-                    <img src="Celestia.png" alt="Device Image">
-                    <ul>
-                        <li>Android-Based AI Analysis App</li>
-                        <li>Organ Identification & Anomoly Detection</li>
-                        <li>95% Confidence Level</li>
-                    </ul>
+                    <img src="App.jpg" alt="App Login">
+                    <p>Celestia is an Android-based AI analysis app designed to provide accurate organ identification and anomaly detection in ultrasound images. With a 95% confidence level, Celestia aims to assist healthcare professionals in making informed decisions, particularly in extreme environments where access to traditional diagnostic tools may be limited.</p>
+                    <img src="AI.png" alt="AI Example">
+                    <p>Our AI model is trained on a diverse dataset of ultrasound images, enabling it to recognize various organs and detect anomalies with high precision. Celestia's user-friendly interface allows for easy navigation and quick analysis, making it an essential tool for medical professionals in the field.</p>
                 </div>
 
                 <div class="content-box">
@@ -101,3 +134,43 @@
             </ul>
         </nav>
     </footer>
+<script>
+const track = document.getElementById('carouselTrack');
+const slides = document.querySelectorAll('.team-member');
+const nextBtn = document.querySelector('.carousel-btn.right');
+const prevBtn = document.querySelector('.carousel-btn.left');
+
+let index = 0;
+
+function updateCarousel() {
+    track.style.transform = `translateX(-${index * 100}%)`;
+}
+
+// Buttons
+nextBtn.addEventListener('click', () => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+});
+
+prevBtn.addEventListener('click', () => {
+    index = (index - 1 + slides.length) % slides.length;
+    updateCarousel();
+});
+
+// Auto-slide
+let autoSlide = setInterval(() => {
+    index = (index + 1) % slides.length;
+    updateCarousel();
+}, 3000);
+
+// Pause on hover
+track.addEventListener('mouseenter', () => clearInterval(autoSlide));
+track.addEventListener('mouseleave', () => {
+    autoSlide = setInterval(() => {
+        index = (index + 1) % slides.length;
+        updateCarousel();
+    }, 3000);
+});
+</script>
+</body>
+</html>
